@@ -38,6 +38,8 @@ RUN buildDeps='curl gcc make autoconf libc-dev zlib1g-dev pkg-config' \
     && apt-get install --no-install-recommends --no-install-suggests -q -y \
             apt-utils \
             nano \
+            curl \
+            cron \
             zip \
             unzip \
             python3-pip \
