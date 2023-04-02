@@ -14,7 +14,7 @@ ENV TIME_ZONE=Asia/Shanghai
 RUN ln -sf /usr/share/zoneinfo/${TIME_ZONE} /etc/localtime
 
 # Install Basic Requirements
-RUN buildDeps='curl gcc make autoconf libc-dev zlib1g-dev pkg-config' \
+RUN buildDeps='gcc make autoconf libc-dev zlib1g-dev pkg-config' \
     && set -x \
     && apt-get update \
     && apt-get install --no-install-recommends $buildDeps --no-install-suggests -q -y gnupg2 dirmngr wget apt-transport-https lsb-release ca-certificates \
