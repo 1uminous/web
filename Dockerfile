@@ -133,4 +133,4 @@ EXPOSE 80
 CMD ["/start.sh"]
 
 HEALTHCHECK --interval=5m --timeout=3s \
-  CMD curl -f http://localhost/ping || exit 1
+  CMD curl -f http://localhost:8999/ping || exit 1
