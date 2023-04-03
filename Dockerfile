@@ -121,7 +121,6 @@ COPY ./supervisord.conf /etc/supervisord.conf
 # Override nginx's default config
 RUN sed -i '/include \/etc\/nginx\/conf\.d\/\*\.conf;/i \    include \/etc\/nginx\/status\.conf\;' /etc/nginx/nginx.conf
 COPY ./status.conf /etc/nginx/status.conf
-COPY ./default.conf /etc/nginx/conf.d/default.conf
 
 # Override default nginx welcome page
 COPY html /usr/share/nginx/html
