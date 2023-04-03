@@ -84,6 +84,8 @@ RUN buildDeps='gcc make autoconf libc-dev zlib1g-dev pkg-config' \
     && sed -i -e "s/pm.min_spare_servers = 1/pm.min_spare_servers = 2/g" ${fpm_conf} \
     && sed -i -e "s/pm.max_spare_servers = 3/pm.max_spare_servers = 4/g" ${fpm_conf} \
     && sed -i -e "s/pm.max_requests = 500/pm.max_requests = 200/g" ${fpm_conf} \
+    && sed -i -e "s/^\s*;?\s*pm\.status_path\s*=\s*\/status/pm.status_path = \/fpm_status/g" ${fpm_conf} \
+    && sed -i -e "s/^\s*;?\s*ping\.path\s*=\s*\/ping/ping.path = \/ping/g" ${fpm_conf} \
     && sed -i -e "s/www-data/nginx/g" ${fpm_conf} \
     && sed -i -e "s/^;clear_env = no$/clear_env = no/" ${fpm_conf} \
     && echo "extension=redis.so" > /etc/php/8.1/mods-available/redis.ini \
