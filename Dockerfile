@@ -101,6 +101,14 @@ RUN buildDeps='gcc make autoconf libc-dev zlib1g-dev pkg-config' \
     && ln -sf /etc/php/8.1/mods-available/memcached.ini /etc/php/8.1/cli/conf.d/20-memcached.ini \
     && ln -sf /etc/php/8.1/mods-available/imagick.ini /etc/php/8.1/fpm/conf.d/20-imagick.ini \
     && ln -sf /etc/php/8.1/mods-available/imagick.ini /etc/php/8.1/cli/conf.d/20-imagick.ini \
+    # Install ioncube_loader extension
+    && wget https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.zip \
+    && unzip ioncube_loaders_lin_x86-64.zip \
+    && cp ioncube/ioncube_loader_lin_8.1.so /usr/lib/php/20210902 \
+    && echo "zend_extension=ioncube_loader_lin_8.1.so" > /etc/php/8.1/mods-available/ioncube.ini \
+    && ln -sf /etc/php/8.1/mods-available/ioncube.ini /etc/php/8.1/fpm/conf.d/01-ioncube.ini \
+    && ln -s /etc/php/8.1/mods-available/ioncube.ini /etc/php/8.1/cli/conf.d/01-ioncube.ini \
+    && rm -rf ioncube ioncube_loaders_lin_x86-64.zip \
     # Install Composer
     && curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
     && curl -o /tmp/composer-setup.sig https://composer.github.io/installer.sig \
